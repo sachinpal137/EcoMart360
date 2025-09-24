@@ -3,6 +3,7 @@ This repository contains the configuration and documentation for EcoMart360, a c
 
 
 
+
 Phase 1: Discovery & Requirements
 In this initial phase, we laid the foundation for the project.
 
@@ -27,7 +28,9 @@ Company Profile: We configured the company's information, time zone, currency, b
 
 
 
+
 User Setup: We created custom profiles and roles for "Sales Agent" and "Manager" users to ensure proper access and data visibility. 
+
 
 
 
@@ -64,9 +67,62 @@ In this phase, we implemented advanced logic for real-time inventory management.
 Stock Validation Trigger: We wrote a before insert Apex trigger on the Order Line Item object to check for sufficient stock and prevent the sale of out-of-stock items. 
 
 
-
-Stock Reduction Trigger: We wrote an after update Apex trigger on the Order object to automatically reduce the stock quantity of products when an order's status is updated to "Confirmed." 
-
+Stock Reduction Trigger: We wrote an after update Apex trigger on the Order object to automatically reduce the stock quantity of products when an order's status is updated to "Confirmed."
 
 
 Test Classes: We wrote comprehensive test classes for both triggers to ensure they work as expected and meet Salesforce's code coverage requirements for deployment. 
+
+Phase 6: User Interface Development
+In this phase, we focused on making the application user-friendly.
+
+
+Lightning Record Page: We customized the Order record page using the Lightning App Builder, adding a visual Path component and organizing related lists into tabs for a better user experience. 
+
+
+
+Utility Bar: We added a "New Order" quick action to the app's utility bar to allow for efficient record creation from anywhere in the app. 
+
+
+Lightning Web Component (LWC): We built a custom productSelector LWC to allow users to search for available products and add them to an order with a single click, calling Apex methods to perform the search and create records. 
+
+
+
+Phase 7: Integration & External Access
+In this phase, we connected our Salesforce application with a mock external system.
+
+
+Integration Configuration: We configured Remote Site Settings and a Named Credential to establish a secure and authenticated connection point to a mock external shipping API. 
+
+
+
+Apex Callout: We wrote an asynchronous @future Apex method to make a REST callout to the external service to fetch mock tracking information. 
+
+
+UI Action: We built a Screen Flow and a Quick Action button on the Order page to allow users to manually trigger the Apex callout.
+
+Phase 8: Data Management & Deployment
+In this phase, we managed the application's data and simulated a deployment.
+
+
+Data Import: We used the Data Import Wizard to bulk-upload sample EcoProduct records from a CSV file. 
+
+
+Data Quality: We created a Matching Rule and a Duplicate Rule to prevent users from creating duplicate EcoProduct records. 
+
+
+Deployment Simulation: We created an Unmanaged Package and added all of the project's components (Objects, Apex Code, LWC, etc.) to simulate packaging our application for deployment. 
+
+
+Phase 9: Reporting, Dashboards & Security Review
+In this final development phase, we built analytics and performed a security review.
+
+
+Reports: We created custom report types and built key reports, such as "Sales by Product Category" and "Orders by Status". 
+
+
+
+Dashboards: We created a "Manager's Revenue Dashboard" with visual components like charts and graphs to provide an at-a-glance view of business performance. 
+
+
+
+Security Review: We performed a final security check, verifying our Sharing Settings (OWD), adjusting Field Level Security (FLS) to make fields read-only for certain profiles, and confirming our org's Session Settings. 
